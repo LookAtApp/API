@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LookAt API Documentation</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script src="https://use.fortawesome.com/a2a6e3e9.js"></script>
+
+    <script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+	<script src='https://assets-cdn.lookat.io/element/HtmlInteractive-min.js' defer></script> 
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://www.looat.io">
+						<img alt="Brand" src="assets/logo.png">
+					</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-sm" style="margin-top: 2px;"
+                                       placeholder="Search"/>
+                            </div>
+                        </form>
+                    </ul> -->
+                </div>
+
+            </nav>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12">
+            <div class="col-md-3 side-menu">
+                <div class="panel panel-default">
+                    <div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <i class="pull-right fa fa-power-off libreMenuIcon"></i>
+
+                            <a data-toggle="collapse" href="#menuPanelListGroup">
+                                <span>Getting Started</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse in" id="menuPanelListGroup">
+                        <li class="list-group-item librePanelListGroupItem">
+                            <a href="#getting-started-intro">Introduction</a>
+                            
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#getting-started-get-token">Token</a>
+                            
+                        </li>
+					 </ul>
+
+                    <div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right la la-project libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu2PanelListGroup">
+                                <span>Projects</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu2PanelListGroup">
+                        <li class="list-group-item librePanelListGroupItem">
+                            <a href="#projects-description">Description</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#projects-new-project">Create a New Project</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#projects-share">Share a Project</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#projects-link">Get a link to a Project</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#projects-list-per-user">Get a List of Projects for a User</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#projects-users-per-project">Get a List of Collaborators for a Project</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type delete">delete</span><a href="#projects-remove-user">Remove Collaborator from a Project</a>
+                        </li>
+                    </ul>
+
+                    <div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-folder-o libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu3PanelListGroup">
+                                <span>Folders</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu3PanelListGroup">
+                        <li class="list-group-item librePanelListGroupItem">
+                            <a href="#folders-description">Description</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#folders-create">Create a New Folder</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#folders-share">Share a Folder</a>
+                        </li>
+						 <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#folders-link">Get a link to a Folder</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#folders-get-list-for-user">Get a list of Folders for a User</a>
+                        </li>
+						 <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type delete">delete</span><a href="#folders-remove-user">Remove Collaborator from a Folder</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type delete">delete</span><a href="#folders-delete">Delete a Folder</a>
+                        </li>
+						
+                    </ul>
+					 <div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-files-o libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu4PanelListGroup">
+                                <span>Files</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu4PanelListGroup">
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#files-description">Description</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#files-get-list-for-user">Get a list of Files for a User</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#files-get-versions-for-file">Get versions List for a File</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type delete">delete</span><a href="#files-delete">Delete a File</a>
+                        </li>
+					</ul>
+					<div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-upload libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu8PanelListGroup">
+                                <span>Upload</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu8PanelListGroup">
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#upload-description">Description</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#upload-get-link">Get file upload URL</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#upload-get-link-version">Get version upload URL</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type put">put</span><a href="#upload-file">Upload File or Version</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                           <b class="fa fa-code"></b><a href="#upload-file-example"> Complete File and Version Upload Examples</a>
+                        </li>
+					</ul>
+					<div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-share-alt libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu5PanelListGroup">
+                                <span>Sharing Files</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu5PanelListGroup">
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#share-description">Description</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#share-get-groups">Get List of Groups for a File</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#share-create-group">Create a New Group</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#share-add-user-to-group">Add Collaborators to a Group (Share a File)</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type delete">delete</span><a href="#share-remove-user">Remove Collaborator from a Group (Un-Share a File)</a>
+                        </li>
+					</ul>
+					<div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-comments-o libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu6PanelListGroup">
+                                <span>Comments</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu6PanelListGroup">
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#comments-description">Description</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#comments-get-list">Get list of Comments for a File</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#comments-get-list-multiple">Get list of Comments for multiple Files</a>
+                        </li>
+					</ul>
+					<div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-check libreMenuIcon"></b>
+                            <a data-toggle="collapse" href="#menu9PanelListGroup">
+                                <span>Approvals</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu9PanelListGroup">
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#approvals-description">Description</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#approvals-get">Get Approval</a>
+                        </li>
+					</ul>
+					<div class="panel-heading librePanelHeading">
+                        <div class="panel-title">
+                            <b class="pull-right fa fa-users libreMenuIcon"></b>
+
+                            <a data-toggle="collapse" href="#menu7PanelListGroup">
+                                <span>Team</span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="list-group collapse out" id="menu7PanelListGroup">
+						<li class="list-group-item librePanelListGroupItem">
+                            <a href="#team-description">Description</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#team-get-list">Get List of Team Members</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#team-get-projects">Get List of Team Projects</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#team-get-files">Get List of Team Files</a>
+                        </li>
+						<li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#team-reset-password">Reset Password for a User</a>
+                        </li>
+						
+					</ul>
+                </div>
+            </div>
+            <div class="col-md-9 col-md-offset-3 content-column">
+				<div class="section first">
+					<h1>
+						Getting Started
+					</h1>
+					<h2 id="getting-started-intro">
+						Introduction
+					</h2>
+					<p>
+						LookAt exposes an extensive API which enables partners to develop integrations both in and out of LookAt - <br/>
+						From uploading files, sharing, using metadata or extracting custom usage reports.<br/>
+						Before you get started make sure you have API access enabled and your account ID (used in some of the calls). For more inquiries contact <a href="mailto:developer@lookat.io">developers@lookat.io</a>
+					</p>
+					
+					<h2 id="getting-started-get-token">
+						<span class="call-type-body get">get</span> Get Token
+					</h2>
+					<p>
+						Returns a token to be used in every API call
+					</p>
+					<div>
+						<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/Token</span>
+					</div>
+
+					<div class="query-label">Data Params:</div>
+					<div>
+						<span class="code-body">​grant_type=password&amp;username=&lt;email&gt;&amp;password=&lt;password&gt;</span>
+					</div>
+
+					<div>
+						<span class="query-label">
+							Sample Code (Javascript):
+						</span>
+						<div>
+							<script src="https://gist.github.com/LookAtApp/e9ecba01fa6580a8ac91e20310f653fd.js"></script>
+						</div>
+					</div>
+				</div>
+			
+				<div class="section projects">
+					<h1>
+						Projects
+					</h1>
+					<h2 id="projects-description">
+						Description
+					</h2>
+					<p>
+						Projects are the highest level entity in LookAt. Projects can be only created on the dashboard and cannot be nested under other projects or folders.<br/>
+						Any action in LookAt must start by creating a Project for the simple reason that content can only be uploaded into projects rather than directly to the Dashboard.<br/>
+						The Project object inherits from a Folder object and this is why it contains both ProjectID and FolderID properties. Keep this in mind since some of the queries require both or one of those ID's. 
+						
+					</p>
+					<div class="action">
+						<h2 id="projects-new-project">
+							<span class="call-type-body post">Post</span> Create New Project
+						</h2>
+						<p>
+							Use this call to create a new project on-behalf of a user
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/payinggroups/{AccountID}/projects/post</span>
+						</div>
+
+						<div class="query-label">Data Params:</div>
+						<div>
+							<span class="code-body">{ Folder: {FolderName: "my project"}, ParentID: {FolderID} }</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/fbf805e484fc1302c6353f5e0b48c8ee.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="projects-share">
+							<span class="call-type-body post">Post</span> Share a Project
+						</h2>
+						<p>
+							Use this call to share a project with an array of collaborators on behalf of a user
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/share</span>
+						</div>
+
+						<div class="query-label">Data Params: (Array)</div>
+						<div>
+							<span class="code-body">[{ PermissionType: 1, User: { Email: 'collaborator1@lookat.io' } }] // PermissionType can be always 1</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/cf7706032184130fb70910013cc6f9a6.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="projects-link">
+							<span class="call-type-body get">Get</span> Get a link to a Project
+						</h2>
+						<p>
+							Use this call to retrieve a link to a project. The link can be used only by users who are shared with the project or users who have "View All Projects" permission.
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/projects/{projectId}/folders/{FolderIDofProject}/getFolderLink</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io' } // userEmail is owner of project</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/de9711c5476aee1e729dc0ae23fc43d5.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="projects-list-per-user">
+							<span class="call-type-body get">Get</span> Get a List of Projects for a User
+						</h2>
+						<p>
+							Use this call to retrieve a list of all the projects owned by a user
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/getUserProjects</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io' }</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/1ea4702d1735aeb2ad4334d1f7893a9d.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="projects-users-per-project">
+							<span class="call-type-body get">Get</span> Get a List of Collaborators for a Project
+						</h2>
+						<p>
+							Use this call to retrieve a list of collaborators on a specific project
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/getProjectUsers</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}' }</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/319f2d89c904d7f08fef5d903474be48.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="projects-remove-user">
+							<span class="call-type-body delete">delete</span> Remove Collaborator from a Project
+						</h2>
+						<p>
+							Use this call to remove collaborator from a specific project
+						</p>
+						<div>
+							<span class="code-body type">Delete</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{projectFolderId}/users/{userId}/removeUserFromProject</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/641e15b982f8fc928b4358a0e71b84ba.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section folders">
+					<h1>
+						Folders
+					</h1>
+					<h2 id="folders-description">
+						Description
+					</h2>
+					<p>
+						Folders are containers for files and/or other folders.<br/>
+						Use folders to better originize your content or to share different content with different collaborators.
+						
+					</p>
+					<div class="action">
+						<h2 id="folders-create">
+							<span class="call-type-body post">Post</span> Create New Folder
+						</h2>
+						<p>
+							Use this call to create a new folder. Folder can be nested under a project or another folder
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/project/{projectId}/folders</span>
+						</div>
+
+						<div class="query-label">Data Params:</div>
+						<div>
+							<span class="code-body">{ Folder: {FolderName: "My folder"}, ParentID: {FolderID}} // ParentID is the FolderID of the folder where you want to nest your new folder</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/78a1a89bb9531b1eae42dbe802e4db88.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="folders-share">
+							<span class="call-type-body post">Post</span> Share a Folder
+						</h2>
+						<p>
+							Use this call to share a folder with an array of collaborators on behalf of a user
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderToShareId}/share</span>
+						</div>
+
+						<div class="query-label">Data Params: (Array)</div>
+						<div>
+							<span class="code-body">[{ PermissionType: 1, User: { Email: 'collaborator1@lookat.io' } }] // PermissionType can be always 1</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/9f3c41c1041c90e6a1598a86f53024b2.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="folders-link">
+							<span class="call-type-body get">Get</span> Get a link to a Folder
+						</h2>
+						<p>
+							Use this call to retrieve a link to a Folder. The link can be used only by users who are shared with the folder.
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/projects/{projectId}/folders/{folderToGetLinkToId}/getFolderLink</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/309542200c5f77edfe16bbae3d260961.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="folders-get-list-for-user">
+							<span class="call-type-body get">Get</span> Get a list of Folders for a User
+						</h2>
+						<p>
+							Use this call to retrieve a list of all the Folder tree owned by a user
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/folders/getUserFolders</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/1b15c698ad369c8c8168bddaae4a736c.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="folders-remove-user">
+							<span class="call-type-body delete">delete</span> Remove Collaborator from a Folder
+						</h2>
+						<p>
+							Use this call to remove collaborator from a specific Folder
+						</p>
+						<div>
+							<span class="code-body type">Delete</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderId}/users/{userId}/RemoveUserFromFolder</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/8add52ef747aa99b0cef5ba305b23ab7.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="folders-delete">
+							<span class="call-type-body delete">delete</span> Delete a Folder
+						</h2>
+						<p>
+							Use this call to Delete a Folder
+						</p>
+						<div>
+							<span class="code-body type">Delete</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderToDeleteId}/delete</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/35b50f336dfc3805b728a3e8cc1dfedf.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section files">
+					<h1>
+						Files
+					</h1>
+					<h2 id="files-description">
+						Description
+					</h2>
+					<p>
+						LookAt enables you to work on more than 100 file types including docs, ppt, PDF, images, audio files, videos, 360 videos and HTML.<br/>
+						This section contains all calls related to files in LookAt.
+					</p>
+					<div class="action">
+						<h2 id="files-get-list-for-user">
+							<span class="call-type-body get">get</span> Get a list of Files for a User
+						</h2>
+						<p>
+							Use this call to retrieve an array of all files own by a user
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/videos/getUserFiles</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/588593f955e3064888b8715d14172f0d.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="files-get-versions-for-file">
+							<span class="call-type-body get">get</span> Get Versions List for a File
+						</h2>
+						<p>
+							Use this call to retrieve an array of versions of a file<br/>
+							ENUM MediaType { Video, Audio, Image, Video360, Image360, Txt, Pdf, Presentation, Word, Excel, Html, HtmlInteractive }
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/projects/{projectId}/videos/{videoId}/videoversions/getUserVideoVersions</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/c345fdc0550c86e3b1be87b98d81ac9b.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="files-delete">
+							<span class="call-type-body delete">delete</span> Delete a File
+						</h2>
+						<p>
+							Use this call to delete a file 
+						</p>
+						<div>
+							<span class="code-body type">Delete</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/videos/{videoId}/delete // videoID == fileID</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - email of the original uploader</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/03cd77b1c41d838b0d028d783f615a07.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section upload">
+					<h1>
+						Upload Files and Versions
+					</h1>
+					<h2 id="upload-description">
+						Description
+					</h2>
+					<p>
+						LookAt utilizes a CDN technology for both streaming and uploads. This is why uploading files or versions requires 2 API calls:<br/>
+						1. Retrieving a designated URL for the upload call.<br/>
+						2. Upload to the designated URL.
+					</p>
+					<div class="action">
+						<h2 id="upload-get-link">
+							<span class="call-type-body post">post</span> Get URL for New File Upload
+						</h2>
+						<p>
+							Use this call to retrieve a designated URL for the upload
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectID}/folders/{folderId}/videos/url</span>
+						</div>
+						<div class="query-label">Data Params: (Object)</div>
+						<div>
+							<span class="code-body">{"fileName":name,"FileSizeInKB":fileSize,"is360":bool}</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file will be uploaded on-behalf of this user</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/d2b51503e1f4dd2e3b0d69f764f07e5a.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="upload-get-link-version">
+							<span class="call-type-body post">Post</span> Get URL for New Version Upload
+						</h2>
+						<p>
+							Use this call to retrieve a designated URL for the version update.
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectID}/videos/{fileId}/videoversions/url</span>
+						</div>																					 
+						<div class="query-label">Data Params: (Object)</div>
+						<div>
+							<span class="code-body">{"fileName":name,"FileSizeInKB":fileSize,"is360":bool}</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file will be uploaded on-behalf of this user</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/2dc05a39c133334af077c690144ab3e3.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="upload-file">
+							<span class="call-type-body put">put</span> Upload File or Version
+						</h2>
+						<p>
+							Use this call to to upload a new file/files or new versions to the designated URL returned from the <a href="#upload-get-link">previous call</a>
+						</p>
+						<div>
+							<span class="code-body type">Put</span> <span class="code-body">Designated URL</span>
+						</div>
+						<div class="query-label">Body</div>
+						<div>
+							<span class="code-body">The file</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/e4b99d247774b7d8482873818f99397c.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="upload-file-example">
+							Complete Upload New File or Version Example
+						</h2>
+
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/36a2efdda96afe167a2cb46b8c0bdbc0.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section sharing">
+					<h1>
+						Sharing Files
+					</h1>
+					<h2 id="share-description">
+						Description
+					</h2>
+					<p>
+						Each file in LookAt can be shared in unlimited number of private discussion <b>groups</b>.<br/>
+						Sharing a specific file in LookAt actually means you add a user to a certain group. Every file contains at least one group (Created automatically when a file is uploaded).
+					</p>
+					<div class="action">
+						<h2 id="share-get-groups">
+							<span class="call-type-body get">get</span> Get List of Groups for a File
+						</h2>
+						<p>
+							Use this call to retrieve the groups list for a file
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/videos/{fileId}/getVideoGroups</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file owner</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/df07615975de03e626bfcf46be24c1ee.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="share-create-group">
+							<span class="call-type-body post">post</span> Create New Group
+						</h2>
+						<p>
+							Use this call to create new private discussion group
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/videos/{fileId}/group</span>
+						</div>
+						<div class="query-label">Data Params: (Object)</div>
+						<div>
+							<span class="code-body">{ Title: {group_name} }</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file owner</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/d347352543bef336591ba2da91a37f3a.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="share-add-user-to-group">
+							<span class="call-type-body post">post</span> Add Collaborators to a Group (Share a File)
+						</h2>
+						<p>
+							Use this call to add collaborators to a group (Simply put - Share a file)
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/videos/{fileId}/group/{groupId}/addUser</span>
+						</div>
+						<div class="query-label">Data Params: (Object)</div>
+						<div>
+							<span class="code-body">{ Email: {Collaborator_Email} }</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file owner</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/4ce4b9e78100c1dfb4ed5ecfd4ea80ee.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="share-remove-user">
+							<span class="call-type-body delete">delete</span> Remove Collaborator from a Group (Un-Share a File)
+						</h2>
+						<p>
+							Use this call to remove a user from group (Simply put - Un-share a file)
+						</p>
+						<div>
+							<span class="code-body type">Delete</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderId}/videos/{fileId}/groups/{groupId}/user/{userId}/removeUser</span>
+						</div>
+
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/43a50f7eb416f4644b3411007f5464a6.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section comments">
+					<h1>
+						Comments
+					</h1>
+					<h2 id="comments-description">
+						Description
+					</h2>
+					<p>
+						Use the following calls to retrieve list of comments from a single file or multiple files.
+					</p>
+					<div class="action">
+						<h2 id="comments-get-list">
+							<span class="call-type-body get">get</span> Get list of Comments for a File
+						</h2>
+						<p>
+							Use this call to retrieve a list of comments on a specific version in a file
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/videos/{fileId}/version/{versionId}/comments</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file owner</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/a78243e2b5725e75a44bddcde0246946.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="comments-get-list-multiple">
+							<span class="call-type-body post">post</span> Get list of Comments for multiple files
+						</h2>
+						<p>
+							Use this call to retrieve a list of all comments on multiple files
+						</p>
+						<div>
+							<span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/comments/all</span>
+						</div>
+						<div class="query-label">Data Params: (Array of file ID's)</div>
+						<div>
+							<span class="code-body">[{fileId1},{fileId2}]</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io', 'Content-Type': 'application/json'}</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/19ccb7790398941bbc599765362fe5ce.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section approval">
+					<h1>
+						Approvals
+					</h1>
+					<h2 id="approvals-description">
+						Description
+					</h2>
+					<p>
+						Use to following calls to retrieve data regarding the approvals status of a file.
+					</p>
+					<div class="action">
+						<h2 id="approvals-get">
+							Get Approval 
+						</h2>
+						<p>
+							Approval data is a part of the data returned when requesting a file version.<br/>
+							In order to retrieve the approval data use the <a href="#files-get-versions-for-file">"Get Versions List for a File"</a> query. See below example of the response for a file containing an Approval
+						</p>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/54be0db6e063cfbae3c9885372f44032.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section team">
+					<h1>
+						Team
+					</h1>
+					<h2 id="team-description">
+						Description
+					</h2>
+					<p>
+						Use to following calls to retrieve data and manage your team members
+					</p>
+					<div class="action">
+						<h2 id="team-get-list">
+							<span class="call-type-body get">get</span> Get List of Team Members
+						</h2>
+						<p>
+							Use this call to retrieve a list of your team members
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/payingGroups/{accountId}/videos/getTeamMembers</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}' }</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/f7e38b872089bde9b36f2013fd723f68.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="team-get-projects">
+							<span class="call-type-body get">get</span> Get List of Team Projects
+						</h2>
+						<p>
+							Use this call to retrieve a list of your team members' projects
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/payingGroups/{accountId}/getTeamProjects</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}' }</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/4bcad99f43d8a777564333a6595d00a8.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="team-get-files">
+							<span class="call-type-body get">get</span> Get List of Team Files
+						</h2>
+						<p>
+							Use this call to retrieve a list of files uploaded by your team members
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/payingGroups/{accountId}/videos/getTeamVideos</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}' }</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/d5f4d420a72588b2896540919fc4e3ca.js"></script>
+							</div>
+						</div>
+					</div>
+					<div class="action">
+						<h2 id="team-reset-password">
+							<span class="call-type-body get">get</span> Reset Password
+						</h2>
+						<p>
+							Use this call to reset a team member's password
+						</p>
+						<div>
+							<span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/user/{userId}/resetPassword</span>
+						</div>
+						<div class="query-label">Header:</div>
+						<div>
+							<span class="code-body">{ 'Authorization': 'Bearer {access_token}' }</span>
+						</div>
+						<div>
+							<span class="query-label">
+								Sample Code (Javascript):
+							</span>
+							<div>
+								<script src="https://gist.github.com/LookAtApp/ba15c5edfbdfab7023b30f524797cb65.js"></script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
