@@ -31,6 +31,10 @@ font-weight:bold;
 b.fa, b.la{
 	margin-top: 7px;
 }
+
+.libreMenuIcon.fa.fa-power-off {
+margin-top:6px;
+}
 .call-type{
 	font-size: 10px;
 

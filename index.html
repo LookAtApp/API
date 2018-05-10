@@ -153,6 +153,12 @@
 						<li class="list-group-item librePanelListGroupItem">
                             <span class="call-type delete">delete</span><a href="#files-delete">Delete a File</a>
                         </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type put">put</span><a href="#files-lock">Lock a File</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type put">put</span><a href="#files-unlock">Unlock a File</a>
+                        </li>
 					</ul>
 					<div class="panel-heading librePanelHeading">
                         <div class="panel-title">
@@ -239,8 +245,21 @@
                             <a href="#approvals-description">Description</a>
                         </li>
 						<li class="list-group-item librePanelListGroupItem">
-                            <a href="#approvals-get">Get Approval</a>
+                            <span class="call-type get">get</span><a href="#approvals-get">Get Approval By ID</a>
                         </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type get">get</span><a href="#approvals-users">Get List Of Potential Approvers</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type post">post</span><a href="#approvals-post">Create a new Approval for a file</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type put">put</span><a href="#approvals-put">Update an existing Approval</a>
+                        </li>
+                        <li class="list-group-item librePanelListGroupItem">
+                            <span class="call-type put">put</span><a href="#approvals-submit">Submit a Decision on-behalf of a user</a>
+                        </li>
+
 					</ul>
 					<div class="panel-heading librePanelHeading">
                         <div class="panel-title">
@@ -725,6 +744,52 @@
 							</div>
 						</div>
 					</div>
+                    <div class="action">
+                        <h2 id="files-lock">
+                            <span class="call-type-body put">put</span> Lock a File
+                        </h2>
+                        <p>
+                            Use this call to lock a file from adding new comments or submitting / changing approval decisions
+                        </p>
+                        <div>
+                            <span class="code-body type">Put</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/lock // videoID == fileID</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body"> { 'Content-Type': 'application/json', 'userEmail': 'janedoe@lookat.io', 'Authorization': 'Bearer {access_token}' }</span>
+                        </div>
+                        <div>
+                            <span class="query-label">
+                                Sample Code (Javascript):
+                            </span>
+                            <div>
+                                <script src="https://gist.github.com/LookAtApp/0e1e4070a21d4d376e4ecfe648fd4e6d.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <h2 id="files-unlock">
+                            <span class="call-type-body put">put</span> Unlock a File
+                        </h2>
+                        <p>
+                            Use this call to unlock a locked file.
+                        </p>
+                        <div>
+                            <span class="code-body type">Put</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/unlock // videoID == fileID</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body"> { 'Content-Type': 'application/json', 'userEmail': 'janedoe@lookat.io', 'Authorization': 'Bearer {access_token}' }</span>
+                        </div>
+                        <div>
+                            <span class="query-label">
+                                Sample Code (Javascript):
+                            </span>
+                            <div>
+                                <script src="https://gist.github.com/LookAtApp/182d6a60761eaca63109f495e7431c5d.js"></script>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<div class="section upload">
 					<h1>
@@ -1012,16 +1077,22 @@
 						Description
 					</h2>
 					<p>
-						Use to following calls to retrieve data regarding the approvals status of a file.
+						Use to following calls get approval status, create new or update exixting approvals
 					</p>
 					<div class="action">
 						<h2 id="approvals-get">
-							Get Approval 
+                            <span class="call-type-body get">get</span> Get Approval By ID
 						</h2>
 						<p>
-							Approval data is a part of the data returned when requesting a file version.<br/>
-							In order to retrieve the approval data use the <a href="#files-get-versions-for-file">"Get Versions List for a File"</a> query. See below example of the response for a file containing an Approval
+							Use this call to retreive data about the status of an existing approval. To find the ID for the approval use <a href="#files-get-versions-for-file">"Get Versions List for a File"</a> query.
 						</p>
+                        <div>
+                            <span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/videoversions/{versionId}/approval/{approvalId}</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file owner</span>
+                        </div>
 						<div>
 							<span class="query-label">
 								Sample Code (Javascript):
@@ -1031,6 +1102,98 @@
 							</div>
 						</div>
 					</div>
+                    <div class="action">
+                        <h2 id="approvals-users">
+                            <span class="call-type-body get">get</span> Get List Of Potential Approvers
+                        </h2>
+                        <p>
+                            Use this call to retreive a list of all users who are shared with a specific file in order to include them in a new approval.
+                        </p>
+                        <div>
+                            <span class="code-body type">Get</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/videoversions/{versionId}/approval/possibleApprovalUsersForFile</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body">{ 'Authorization': 'Bearer {access_token}', userEmail: 'janedoe@lookat.io'} // userEmail - file owner</span>
+                        </div>
+                        <div>
+                            <span class="query-label">
+                                Sample Code (Javascript):
+                            </span>
+                            <div>
+                                <script src="https://gist.github.com/LookAtApp/adc11b8f298fac80585ac8f6e9071842.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <h2 id="approvals-post">
+                            <span class="call-type-body post">post</span> Create a new Approval for a file
+                        </h2>
+                        <p>
+                            Use this call to create a new approval for a file. Request body should include an Approval object containing an array of UserApproval objects. See example below for both objects
+                        </p>
+                        <div>
+                            <span class="code-body type">Post</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/videoversions/{versionId}/approval</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body"> { 'Content-Type': 'application/json', 'userEmail': 'janedoe@lookat.io', 'Authorization': 'Bearer {access_token}' }</span>
+                        </div>
+                        <div>
+                            <span class="query-label">
+                                Sample Code (Javascript):
+                            </span>
+                            <div>
+                                <script src="https://gist.github.com/LookAtApp/ea517fcd9f4bc9149b456815b317ee0c.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <h2 id="approvals-put">
+                            <span class="call-type-body put">put</span> Update an existing Approval
+                        </h2>
+                        <p>
+                            Use this call to change setting or add/remove users for an existing Approval
+                        </p>
+                        <div>
+                            <span class="code-body type">Put</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/videoversions/{versionId}/approval/{approvalId}</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body"> { 'Content-Type': 'application/json', 'userEmail': 'janedoe@lookat.io', 'Authorization': 'Bearer {access_token}' }</span>
+                        </div>
+                        <div>
+                            <span class="query-label">
+                                Sample Code (Javascript):
+                            </span>
+                            <div>
+                                <script src="https://gist.github.com/LookAtApp/b9fdeafe7a34c1ecec4e7125cc356e28.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <h2 id="approvals-submit">
+                            <span class="call-type-body put">put</span> Submit a Decision on-behalf of a user
+                        </h2>
+                        <p>
+                            Use this call to submit a decision on-behalf a user who is a part of an existing approval
+                        </p>
+                        <div>
+                            <span class="code-body type">Put</span> <span class="code-body">https://app.lookat.io/external_api/v1/projects/{projectId}/folders/{folderUserParentId}/videos/{videoId}/videoversions/{versionId}/approval/{approvalId}/submitDecisionOnBehalf</span>
+                        </div>
+                        <div class="query-label">Header:</div>
+                        <div>
+                            <span class="code-body"> { 'Content-Type': 'application/json', 'userEmail': 'janedoe@lookat.io', 'Authorization': 'Bearer {access_token}' } // 'userEmail' - email of the "on-behalf" user </span>
+                        </div>
+                        <div>
+                            <span class="query-label">
+                                Sample Code (Javascript):
+                            </span>
+                            <div>
+                                <script src="https://gist.github.com/LookAtApp/996b4fadc876d8448834efa48a7f38f2.js"></script>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				<div class="section team">
 					<h1>
